@@ -321,13 +321,13 @@
 			
 			init: function() {
 				if (document.cookie != "") {
-          imBored.facebookRequestRecieved()
-        }
+		          imBored.facebookRequestRecieved()
+		        }
 			},
 			
 			facebookRequest: function() {
         
-        	window.location = "/connect"
+        		window.location = "/connect"
         
 				//$(".status_message").show().animate({opacity:1}, 200, function() {
 				//	
@@ -346,14 +346,24 @@
 			},
 			
 			newTemplate: function(func) {
-				
+					
 				$.get("http://imbored.davidstrauss.net/me", {}, function(data) {	
+
 					var data = $.parseJSON(data);
+					var location = data.location.id;
 					console.log(data);
 					
-					$('#main_container').empty();
-					$('#main_container').handlebars($('#stage2_template'), '');
-					func();
+					$.get("http://imbored.davidstrauss.net/local_friend", {location: location}, function(location) {
+					
+						var data = $.parseJSON(data);
+						console.log(data);
+						
+						$('#main_container').empty();
+						$('#main_container').handlebars($('#stage2_template'), '');
+						func();
+					
+					});	
+					
 				});	
 				
 			},
@@ -448,7 +458,7 @@
 		});
 	</script>
 	
-	<div id="fb-root"></div>
+<!-- 	<div id="fb-root"></div>
 	<script>
 	  window.fbAsyncInit = function() {
 	    FB.init({
@@ -473,7 +483,7 @@
 	     js.src = "http://connect.facebook.net/en_US/all.js";
 	     ref.parentNode.insertBefore(js, ref);
 	   }(document));
-	</script>
+	</script> -->
 	
 	<!-- creates a jQuery function to talk with handlebars more easily -->
 	<script type="text/javascript">
