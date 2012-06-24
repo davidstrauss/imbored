@@ -327,7 +327,7 @@
 			
 			facebookRequest: function() {
         
-        window.location = "/connect"
+        	window.location = "/connect"
         
 				//$(".status_message").show().animate({opacity:1}, 200, function() {
 				//	
@@ -335,6 +335,7 @@
 			},
 			
 			facebookRequestRecieved: function() {
+				
 				$(".status_message").show().animate({opacity:0}, 200, function() {
 					$(".status_message").hide();
 					$("#stage1_container").show().animate({opacity:0}, 200, function() {
@@ -345,9 +346,16 @@
 			},
 			
 			newTemplate: function(func) {
-				$('#main_container').empty();
-				$('#main_container').handlebars($('#stage2_template'), '');
-				func();
+				
+				$.get("http://imbored.davidstrauss.net/me", {}, function(data) {	
+					var data = $.parseJSON(data);
+					console.log(data);
+					
+					$('#main_container').empty();
+					$('#main_container').handlebars($('#stage2_template'), '');
+					func();
+				});	
+				
 			},
 			
 			newEvent: function(func) {
@@ -501,7 +509,6 @@
 
 	<script id="stage2_template" type="text/x-handlebars-template">
 		
-		{{debug}}
 		
 		<div id="stage2_container">
 					
