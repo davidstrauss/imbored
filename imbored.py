@@ -1,5 +1,6 @@
 from twisted.web.server import Site, NOT_DONE_YET
 from twisted.web.resource import Resource
+from twisted.web.static import File
 from twisted.internet import reactor
 from twisted.python import log
 import sys
@@ -27,6 +28,11 @@ class LocalFriend(Resource):
           return 'Location must be specified.'
 
       token = authentication.get_token(request)
+      if not token:
+          request.redirect('http://imbored.davidstrauss.net/connect')
+          return ""
+
+
       url = 'https://graph.facebook.com/me/friends?fields=name,location,birthday&access_token={0}'.format(token)
       deferred = http_request.run(url)
 
@@ -62,6 +68,9 @@ class AboutMe(Resource):
 
   def render_GET(self, request):
       token = authentication.get_token(request)
+      if not token:
+          request.redirect('http://imbored.davidstrauss.net/connect')
+          return ""
 
       url = 'https://graph.facebook.com/me?access_token={0}'.format(token)
       deferred = http_request.run(url)
@@ -82,7 +91,7 @@ class AboutMe(Resource):
 
       return NOT_DONE_YET
 
-class ImBored(Resource):
+class Connect(Resource):
   def render_GET(self, request):
       token = authentication.get_token(request)
 
@@ -90,11 +99,24 @@ class ImBored(Resource):
       if not token:
           log.msg('User should have been redirected.')
           return ""
-      return "Authenticated with auth_token."
+      
+      log.msg("Already authenticated with auth_token {0}. Redirecting home.".format(token))
+      request.redirect('http://imbored.davidstrauss.net/home')
+      
+      return ""
+
+class ImBored(Resource):
+  def render_GET(self, request):
+      request.redirect('http://imbored.davidstrauss.net/home')
+      return ""
 
   def getChild(self, path, request):
       if path == '':
           return self
+      elif path == 'home':
+          return File("imbored.html")
+      elif path == 'connect':
+          return Connect()
       elif path == 'local_friend':
           return LocalFriend()
       elif path == 'me':

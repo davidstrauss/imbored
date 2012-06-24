@@ -320,13 +320,18 @@
 		var imBored =  {
 			
 			init: function() {
-				
+				if (document.cookie != "") {
+          imBored.facebookRequestRecieved()
+        }
 			},
 			
 			facebookRequest: function() {
-				$(".status_message").show().animate({opacity:1}, 200, function() {
-					
-				});
+        
+        window.location = "/connect"
+        
+				//$(".status_message").show().animate({opacity:1}, 200, function() {
+				//	
+				//});
 			},
 			
 			facebookRequestRecieved: function() {
