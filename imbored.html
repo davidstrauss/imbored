@@ -351,6 +351,8 @@
 
 					var data = $.parseJSON(data);
 					var location = data.location.id;
+					imBored.location = location;
+					
 					console.log(data);
 					console.log(location);
 					
@@ -370,6 +372,8 @@
 			},
 			
 			newEvent: function(func) {
+				
+				
 				$("a[data-value='event']").slideUp('fast', function() {
 					$("a[data-value='event']").empty();
 					$("a[data-value='event']").text("Batman");
@@ -384,16 +388,29 @@
 			},
 			
 			newPerson: function(func) {
-				$("a[data-value='person']").slideUp('fast', function() {
-					$("a[data-value='person']").empty();
-					$("a[data-value='person']").text("Jeff Huber");
-					$("a[data-value='person']").slideDown();
-				});
 				
-				$(".person[data-value='person']").slideUp('fast', function() {
-					$(".person[data-value='person']").css("background-image","url('https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-snc6/182161_10151170731284505_859041691_n.jpg')");
-					$(".person[data-value='person']").slideDown();
-				});
+				$.get("http://imbored.davidstrauss.net/local_friend", {location: location}, function(data) {
+					
+					var data = $.parseJSON(data);
+					console.log(data);
+					
+					$("a[data-value='person']").slideUp('fast', function() {
+						$("a[data-value='person']").empty();
+						$("a[data-value='person']").text(data.name);
+						$("a[data-value='person']").attr("href","https://facebook.com/" + data.id);
+						$("a[data-value='person']").slideDown();
+					});
+					
+					$(".person[data-value='person']").slideUp('fast', function() {
+						$(".person[data-value='person']").css("background-image","url('background-image:url('https://graph.facebook.com/" + data.id + "/picture')");
+						$(".person[data-value='person']").slideDown();
+					});
+					
+				
+				});	
+				
+				
+				
 			},
 			
 			animateTemplate: function() {
@@ -545,9 +562,9 @@
 			<div class="button_wrapper"><a class="next_button btn btn-primary btn-large" target="_blank" href="https://www.facebook.com/dialog/send?app_id=123050457758183&
 				name=People%20Argue%20Just%20to%20Win&
 				link=http://www.nytimes.com/2011/06/15/arts/people-argue-just-to-win-scholars-assert.html&
-				to=7904202&
-				redirect_uri=http://www.example.com/response">Sounds awesome - Message David</a></div>
-			<div class="button_wrapper"><div class="next_button btn btn-danger">No, I hate David and Star Wars</div></div>
+				to={{id}}&
+				redirect_uri=http://www.example.com/response">Sounds awesome - Message {{name}}</a></div>
+			<div class="button_wrapper"><div class="next_button btn btn-danger">No, I hate {{name}} and Star Wars</div></div>
 			
 		</div>
 		
