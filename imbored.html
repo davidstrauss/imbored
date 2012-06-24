@@ -201,7 +201,7 @@
 		}
 		
 		.picture.event {
-			background-image:url('http://www.desktopextreme.com/photos/Star_Wars_-_A_New_Hope_84200545926PM734.jpg');
+			
 		}
 		
 		.plus {
@@ -363,6 +363,7 @@
 						
 						$('#main_container').empty();
 						$('#main_container').handlebars($('#stage2_template'), data);
+						imBored.newEvent();
 						func();
 					
 					});	
@@ -408,7 +409,7 @@
 						$("a[data-value='person']").text(data.name);
 						$(".person_name").text(data.name);
 						$("a[data-value='person']").attr("href","https://facebook.com/" + data.id);
-						$("fb_send_link").attr("href","https://www.facebook.com/" + data.id);
+						$(".fb_send_link").attr("href","https://www.facebook.com/" + data.id);
 						$("a[data-value='person']").slideDown();
 					});
 					
@@ -562,7 +563,7 @@
 			
 			<div class="you_should_text">
 				Watch 
-				<a data-type="changer" data-value="event" class="movie" target="_blank" href="http://starwars.com">Star Wars: A New Hope</a>
+				<a data-type="changer" data-value="event" class="movie" target="_blank" href="http://www.rottentomatoes.com/m/star_wars/"></a>
 				<i data-value="event" class="icon icon-refresh icon-white"></i> 
 				<br/>with 
 				<a data-type="changer" data-value="person" class="movie" target="_blank" href="http://facebook.com/{{id}}">{{name}}</a>
