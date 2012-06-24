@@ -389,7 +389,7 @@
 			
 			newPerson: function(func) {
 				
-				$.get("http://imbored.davidstrauss.net/local_friend", {location: location}, function(data) {
+				$.get("http://imbored.davidstrauss.net/local_friend", {location: imBored.location}, function(data) {
 					
 					var data = $.parseJSON(data);
 					console.log(data);
