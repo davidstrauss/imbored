@@ -373,18 +373,27 @@
 			
 			newEvent: function(func) {
 				
+				$.get("http://imbored.davidstrauss.net/movie", {}, function(data) {
+					
+						var data = $.parseJSON(data);
+						console.log(data);
+						
+						$("a[data-value='event']").slideUp('fast', function() {
+							$("a[data-value='event']").empty();
+							$("a[data-value='event']").text("Batman");
+							$("a[data-value='event']").slideDown();
+						});
+						
+						$(".event").slideUp('fast', function() {
+							$(".event").css("background-image","");
+							$(".event").css("background-image","url('http://www.dan-dare.org/freefun/Images/BatmanDarkKnightWallpaper800.jpg')");
+							$(".event").slideDown();
+						});
+
+				});	
 				
-				$("a[data-value='event']").slideUp('fast', function() {
-					$("a[data-value='event']").empty();
-					$("a[data-value='event']").text("Batman");
-					$("a[data-value='event']").slideDown();
-				});
 				
-				$(".event").slideUp('fast', function() {
-					$(".event").css("background-image","");
-					$(".event").css("background-image","url('http://www.dan-dare.org/freefun/Images/BatmanDarkKnightWallpaper800.jpg')");
-					$(".event").slideDown();
-				});
+			
 			},
 			
 			newPerson: function(func) {
@@ -399,7 +408,7 @@
 						$("a[data-value='person']").text(data.name);
 						$(".person_name").text(data.name);
 						$("a[data-value='person']").attr("href","https://facebook.com/" + data.id);
-						$("fb_send_link").attr("href","https://www.facebook.com/dialog/send?app_id=123050457758183&to=" + data.id);
+						$("fb_send_link").attr("href","https://www.facebook.com/" + data.id);
 						$("a[data-value='person']").slideDown();
 					});
 					
@@ -562,7 +571,7 @@
 		
 			<div class="buttons_container">
 			
-				<div class="button_wrapper"><a class="next_button btn btn-primary btn-large fb_send_link" target="_blank" href="https://www.facebook.com/dialog/send?app_id=123050457758183&to={{id}}">Sounds awesome - Message <div class="person_name">{{name}}</div> </a></div>
+				<div class="button_wrapper"><a class="next_button btn btn-primary btn-large fb_send_link" target="_blank" href="https://www.facebook.com/{{id}}">Sounds awesome - Message <div class="person_name">{{name}}</div> </a></div>
 				<div class="button_wrapper"><div class="next_button btn btn-danger">No, I hate <div class="person_name">{{name}}</div> and Star Wars</div></div>
 				
 			</div>
