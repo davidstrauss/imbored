@@ -353,9 +353,8 @@
 					var location = data.location.id;
 					console.log(data);
 					console.log(location);
-
 					
-					$.get("http://imbored.davidstrauss.net/local_friend", {location: location}, function(location) {
+					$.get("http://imbored.davidstrauss.net/local_friend", {location: location}, function(data) {
 					
 						var data = $.parseJSON(data);
 						console.log(data);
