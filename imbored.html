@@ -399,6 +399,7 @@
 						$("a[data-value='person']").text(data.name);
 						$(".person_name").text(data.name);
 						$("a[data-value='person']").attr("href","https://facebook.com/" + data.id);
+						$("fb_send_link").attr("href","https://www.facebook.com/dialog/send?app_id=123050457758183&to=" + data.id));
 						$("a[data-value='person']").slideDown();
 					});
 					
@@ -554,18 +555,17 @@
 				Watch 
 				<a data-type="changer" data-value="event" class="movie" target="_blank" href="http://starwars.com">Star Wars: A New Hope</a>
 				<i data-value="event" class="icon icon-refresh icon-white"></i> 
-				with 
+				<br/>with 
 				<a data-type="changer" data-value="person" class="movie" target="_blank" href="http://facebook.com/{{id}}">{{name}}</a>
 				<i data-value="person" class="icon icon-refresh icon-white"></i>
 			</div>
 		
 			<div class="buttons_container">
 			
-				<div class="button_wrapper"><a class="next_button btn btn-primary btn-large" target="_blank" href="https://www.facebook.com/dialog/send?app_id=123050457758183&
-					name=People%20Argue%20Just%20to%20Win&
-					link=http://www.nytimes.com/2011/06/15/arts/people-argue-just-to-win-scholars-assert.html&
+				<div class="button_wrapper"><a class="next_button btn btn-primary btn-large fb_send_link" target="_blank" href="https://www.facebook.com/dialog/send?app_id=123050457758183&
+					
 					to={{id}}&
-					redirect_uri=http://www.example.com/response">Sounds awesome - Message <div class="person_name">{{name}}</div> </a></div>
+					">Sounds awesome - Message <div class="person_name">{{name}}</div> </a></div>
 				<div class="button_wrapper"><div class="next_button btn btn-danger">No, I hate <div class="person_name">{{name}}</div> and Star Wars</div></div>
 				
 			</div>
