@@ -380,13 +380,13 @@
 						
 						$("a[data-value='event']").slideUp('fast', function() {
 							$("a[data-value='event']").empty();
-							$("a[data-value='event']").text("Batman");
+							$("a[data-value='event']").text(data.title);
+							$("a[data-value='event']").attr("href",data.links.alternate);
 							$("a[data-value='event']").slideDown();
 						});
 						
 						$(".event").slideUp('fast', function() {
-							$(".event").css("background-image","");
-							$(".event").css("background-image","url('http://www.dan-dare.org/freefun/Images/BatmanDarkKnightWallpaper800.jpg')");
+							$(".event").css("background-image","url('"+ data.posters.profile + "')");
 							$(".event").slideDown();
 						});
 
