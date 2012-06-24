@@ -72,7 +72,19 @@ def run(url, method="GET", data=None, headers={}):
         response.deliverBody(StringReceiver(body))
         response.body = body
 
-        return response
+        def cbResponse(body, response):
+            # Replace the body with the actual one.
+            response.body = body
+            return response
+
+        def cbErrResponse(failure):
+            log.msg("Error getting body.")
+            return failure
+
+        response.body.addCallback(cbResponse, response)
+        response.body.addErrback(cbErrResponse)
+
+        return response.body
 
     def cbErrResponse(failure):
         log.msg("No response received for {0}".format(url))

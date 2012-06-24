@@ -40,22 +40,13 @@ def convert_code_to_token(code):
     def cbResponse(response):
         log.msg('Parsing response into a token.')
 
-        def cbResponse(response):
-            parts = urlparse.parse_qs(response)
-            from pprint import pprint
-            pprint(parts)
-            token = parts['access_token'][0]
-            expires = parts['expires'][0]  # Not yet used.
-            log.msg('Parsed response into token {0}.'.format(token))
-            return token
-
-        def cbErrResponse(error):
-            log.msg(error)
-            return None
-
-        response.body.addCallback(cbResponse)
-        deferred.addErrback(cbErrResponse)
-        return response.body
+        parts = urlparse.parse_qs(response.body)
+        from pprint import pprint
+        pprint(parts)
+        token = parts['access_token'][0]
+        expires = parts['expires'][0]  # Not yet used.
+        log.msg('Parsed response into token {0}.'.format(token))
+        return token
 
     def cbErrResponse(error):
         log.msg(error)
