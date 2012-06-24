@@ -9,7 +9,7 @@ import uuid
 import urllib
 import urlparse
 
-import request
+import http_request
 from configuration import get_configuration
 
 class IFacebookAuth(Interface):
@@ -35,7 +35,7 @@ def convert_code_to_token(code):
 
     url = "https://graph.facebook.com/oauth/access_token?{0}".format(encoded)
 
-    deferred = request.run(url)
+    deferred = http_request.run(url)
 
     def cbResponse(response):
         log.msg('Parsing response into a token.')
@@ -113,7 +113,7 @@ def bounce_for_authentication(request):
     query_string = {
         'client_id': get_configuration()['appId'],
         'redirect_uri': 'http://imbored.davidstrauss.net/bounce/',
-        'scope': ','.join(['user_about_me']),
+        'scope': ','.join(['user_about_me', 'user_birthday', 'email', 'friends_about_me', 'friends_birthday', 'friends_location', 'user_location']),
         'state': auth.state
     }
     encoded = urllib.urlencode(query_string)
