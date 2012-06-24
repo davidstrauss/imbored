@@ -1,0 +1,535 @@
+<html>
+	
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+	<html>
+		
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<link REL="SHORTCUT ICON" HREF="http://cl.ly/033M1b1I2a0J380j0y0Y/favicon_16x16.ico">
+	
+	<title>unbored me!</title>
+	
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400italic,400,700,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	
+	<!-- Jquery and Jquery UI -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="http://playpen.knowitapp.com/js/handlebars.js"></script>
+	
+	<link rel="stylesheet" href="http://playpen.knowitapp.com/bootstrap/css/bootstrap.css"/>
+	
+	
+	<style>
+	
+		html {
+			background-image:url("http://farm6.staticflickr.com/5244/5291556846_78c56bba49_b.jpg");
+			background-size:cover;
+			width:100%;
+			height:100%;
+		}
+	
+		html, body {
+			margin:0px;
+			padding:0px;
+			
+		}
+	
+		body {
+		  margin: 0;
+		  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		  font-size: 13px;
+		  font-weight: normal;
+		  color: #333;
+		  line-height:18px;
+		  background-color:rgba(0,0,0,0);
+		}
+	
+		.page_wrapper {
+			width:790px;
+			margin:0% auto;	
+		}
+		
+		.large_container {
+			width:100%;
+			
+			height:auto;
+			
+			float:left;
+			clear:left;
+		}
+		
+		.large_container.small {
+			height:100px;
+			border-bottom:2px groove #666;
+		}
+		
+		.large_container.large {
+			min-height:300px;
+		}		
+		
+		.header_company_name {
+			font-weight:900;
+			
+			font-size:36px;
+			font-family:"Lobster";
+			
+			opacity:1;
+			color:#fff;
+			text-shadow:-1px -1px rgba(0,0,0,0.5);
+			width:100%;
+			text-align:center;
+			margin-top:50px;
+		}
+		
+		.header_company_name.yellow {
+			color:#EAFF00;
+		}
+		
+		.header_company_name.blue {
+			color:#0088FF;
+			margin:35px 55px;
+		}
+		
+		.container {
+			float:left;
+			text-align:center;
+		}
+		
+		
+		.container.small {
+			width:40%;
+		}
+		
+		.you_should_text {
+			/*font-family: 'Lobster', cursive;*/
+			font-size:32px;
+			line-height:48px;
+			margin:30px 100px 30px 100px;
+			color:#fff;
+			text-align:center;
+			float:left;
+			clear:left;
+			width:570px;
+			background-color:rgba(0,0,0,0.8);
+			padding:0px 10px;
+			
+			-webkit-user-select: none;
+-moz-user-select: none;
+-khtml-user-select: none;
+		}
+		
+		.you_should_text i {
+			margin:19px 0px 0px 3px;
+			opacity:0.6;
+			cursor:pointer;
+		}
+		
+		.you_should_text i:hover {
+			opacity:1;
+		}
+		
+		.you_should_text a {
+			color:#FF3C00;
+			text-decoration:none;	
+			font-weight:600;
+			text-decoration:underline;
+			text-shadow:-1px -1px 1px rgba(0,0,0, 0.5);
+		}
+		
+		.status_message {
+			position:absolute;
+			width:600px;
+			height:50px;
+			border-radius:3px;
+			
+			background-color:#111;
+			opacity:1;
+			margin:0px 105px;
+			box-shadow:0px 0px 0px 2000px rgba(0,0,0,0.8);
+			
+			top:200px;
+			z-index: 999999;
+			
+			display:none;
+			opacity:0;
+		}
+		
+		.status_message div {
+			margin:15px 0px;
+			font-weight:100;
+			font-size:20px;
+			color:#fafafa;
+			text-align:center;
+			width:100%;
+			
+		}
+		
+		.next_button.btn-primary {
+			font-size:24px;
+			padding:10px 30px;
+		}
+		
+		.next_button.btn-danger {
+			margin-top:10px;
+		}
+		
+		.button_wrapper {
+			width:600px;
+			
+			float:left;
+		}
+		
+		.picture_container {
+			width:300px;
+			margin:0% auto;
+			margin-top:30px;
+		  }
+		
+		.picture {
+			float:left;
+			width:100px;
+			height:100px;
+			overflow:hidden;
+			background-size:cover;
+			border-radius:3px;
+			box-shadow:inset 0px 0px 1px rgba(255,255,255,0.3), 0px 0px 10px rgba(0,0,0,0.3);
+		}
+		
+		.picture.event {
+			background-image:url('http://www.desktopextreme.com/photos/Star_Wars_-_A_New_Hope_84200545926PM734.jpg');
+		}
+		
+		.plus {
+			float:left;
+			width:100px;
+			height:100px;
+			font-size:72px;
+			line-height:72px;
+			line-height: 100px;
+			color: white;
+			text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.5);
+		}
+		
+		.picture.person {
+			background-image:url('https://sphotos.xx.fbcdn.net/hphotos-ash3/539961_10102012223205440_1518651358_n.jpg');
+		}
+		
+		.buttons_container {
+			width: 600px;
+			padding: 20px;
+			height: 50px;
+			margin: 0% auto;
+			clear: left;
+			
+			padding: 20px;
+			margin-bottom: 100px;
+			border-radius:3px;
+		}
+		
+		.page_title {
+			font-family:'Droid Sans';
+			font-size:36px;
+			font-weight: 100;
+			color: white;
+			text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.3);
+			line-height: 37px;
+			margin:55px 0px 20px;
+			float: left;
+			text-align: center;
+			width: 100%;
+		}
+		
+		#unbored_facebook_button {
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+			border: 1px solid rgba(255, 255, 255, 0.3);
+			margin:40px 0px 0px 20px; 
+			font-size:36px; 
+			padding:10px 20px;
+		}
+
+		#stage2_container {
+			display:none;
+			opacity:0;
+			float: left;
+			text-align: center;
+		}
+		
+		.picture_holder {
+			float:left;
+			width:100px;
+			
+		}
+		
+	</style>
+	
+	
+	<body>
+		
+		<div class="page_wrapper">
+			
+			<div class="status_message"><div>Waiting for facebook</div></div>
+			
+			<div class="large_container small">
+				
+				<!-- <div class="header_company_name yellow">imBored</div> -->
+				<div class="header_company_name">unbored me!</div>
+				
+			</div>
+			<div id="main_container" class="large_container large">
+
+				<div id="stage1_container" class="container large" style="width:100%;">
+					
+					<div class="page_title">Don't sit by yourself on Youtube tonight</div>
+					
+					<div id="unbored_facebook_button" class="btn btn-primary btn-large" style="">Connect with Facebook</div>
+					
+				</div>
+				
+			</div>
+			
+			<!-- <div id="myMovieLocation">
+			 <img src="http://cdn-7.nflximg.com/us/boxshots/large/70068647.jpg" /><br />
+			 <script src="http://jsapi.netflix.com/us/api/js/api.js">
+			 {
+			 "title_id" : "http://api.netflix.com/catalog/movie/70068647",
+			 "button_type" : ["PLAY_BUTTON"],
+			 "show_logo" : "false",
+			 "x" : "40",
+			 "y" : "20",
+			 "dom_id" : "myMovieLocation",
+			 "application_id" : "ueud47cuyscrn2v9qhwbd38y"
+			 }
+			 </script>
+			 </div>
+			 -->
+		</div>
+		
+	</body>
+	
+	
+	
+	
+	<script>
+	
+	
+		var imBored =  {
+			
+			init: function() {
+				
+			},
+			
+			facebookRequest: function() {
+				$(".status_message").show().animate({opacity:1}, 200, function() {
+					
+				});
+			},
+			
+			facebookRequestRecieved: function() {
+				$(".status_message").show().animate({opacity:0}, 200, function() {
+					$(".status_message").hide();
+					$("#stage1_container").show().animate({opacity:0}, 200, function() {
+						$("#stage1_container").hide();
+						imBored.newTemplate(imBored.animateTemplate);
+					});
+				});
+			},
+			
+			newTemplate: function(func) {
+				$('#main_container').empty();
+				$('#main_container').handlebars($('#stage2_template'), '');
+				func();
+			},
+			
+			newEvent: function(func) {
+				$("a[data-value='event']").slideUp('fast', function() {
+					$("a[data-value='event']").empty();
+					$("a[data-value='event']").text("Batman");
+					$("a[data-value='event']").slideDown();
+				});
+				
+				$(".event").slideUp('fast', function() {
+					$(".event").css("background-image","");
+					$(".event").css("background-image","url('http://www.dan-dare.org/freefun/Images/BatmanDarkKnightWallpaper800.jpg')");
+					$(".event").slideDown();
+				});
+			},
+			
+			newPerson: function(func) {
+				$("a[data-value='person']").slideUp('fast', function() {
+					$("a[data-value='person']").empty();
+					$("a[data-value='person']").text("Jeff Huber");
+					$("a[data-value='person']").slideDown();
+				});
+				
+				$(".person[data-value='person']").slideUp('fast', function() {
+					$(".person[data-value='person']").css("background-image","url('https://fbcdn-sphotos-a.akamaihd.net/hphotos-ak-snc6/182161_10151170731284505_859041691_n.jpg')");
+					$(".person[data-value='person']").slideDown();
+				});
+			},
+			
+			animateTemplate: function() {
+				
+				$(".animate").each(function() {
+					$(this).css("zoom", "0.4");
+				})
+				$("#stage2_container").show().animate({opacity:1}, 200, function() {});
+				$(".animate").animate({zoom:1}, 100);
+			},
+			
+			generateActivity: function() {
+				
+			}
+			
+		}
+		
+		imBored.init();
+		
+		// $("body").on("click","#unbored_facebook_button", function() {	
+			// imBored.facebookRequest();	
+// 			
+			// FB.login(function(response) {
+			   // if (response.authResponse) {
+			     // console.log('Welcome!  Fetching your information.... ');
+			     // FB.api('/me', function(response) {
+			       // console.log('Good to see you, ' + response.name + '.');
+			     // });
+			   // } else {
+			     // console.log('User cancelled login or did not fully authorize.');
+			   // }
+			 // });
+// 			
+		// });
+		
+		$("body").on("click",".status_message", function() {	
+			imBored.facebookRequestRecieved();	
+		});
+		
+		$("body").on("click",".icon-refresh", function() {	
+			var value = $(this).attr("data-value");
+			if (value == "event") {
+				imBored.newEvent();
+			} else if (value == "person") {
+				imBored.newPerson();
+			}
+			
+			
+		});
+		
+		$("body").on("click",".btn-danger", function() {	
+			imBored.newTemplate(imBored.animateTemplate);
+		});
+		
+		$("body").on("click","#unbored_facebook_button", function() {	
+			imBored.facebookRequest();	
+			
+			$.getJSON("http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=5zacahezygerza4v2fvbd9ru", {}, function(data) {
+				var data = $.parseJSON(data);
+		    	console.log(data);
+			});
+			
+		});
+	</script>
+	
+	<div id="fb-root"></div>
+	<script>
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '259091904195141', // App ID
+	      channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel File
+	      status     : true, // check login status
+	      cookie     : true, // enable cookies to allow the server to access the session
+	      xfbml      : true  // parse XFBML
+	    });
+	
+	    // Additional initialization code here
+	    
+	    
+	    
+	  };
+	
+	  // Load the SDK Asynchronously
+	  (function(d){
+	     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement('script'); js.id = id; js.async = true;
+	     js.src = "http://connect.facebook.net/en_US/all.js";
+	     ref.parentNode.insertBefore(js, ref);
+	   }(document));
+	</script>
+	
+	<!-- creates a jQuery function to talk with handlebars more easily -->
+	<script type="text/javascript">
+      (function($) {
+        var compiled = {};
+        $.fn.handlebars = function(template, data) {
+          if (template instanceof jQuery) {
+            template = $(template).html();
+          }
+ 
+          compiled[template] = Handlebars.compile(template);
+          this.html(compiled[template](data));
+        };
+      })(jQuery);
+    </script>
+    
+     <!-- debugging function for handlebars -->
+    <script>
+    	Handlebars.registerHelper("debug", function(optionalValue) {
+		  console.log("Current Context");
+		  console.log("====================");
+		  console.log(this);
+		 
+		  if (optionalValue) {
+		    console.log("Value");
+		    console.log("====================");
+		    console.log(optionalValue);
+		  }
+		});
+	</script>
+	
+	
+
+	<script id="stage2_template" type="text/x-handlebars-template">
+		
+		{{debug}}
+		
+		<div id="stage2_container">
+					
+		<div class="picture_container">
+		
+			<div class="picture_holder"><div data-value="event" class="picture event animate"></div></div>
+			<div class=" plus">&#10010;</div>
+			<div class="picture_holder"><div data-value="person" class="picture person animate"></div></div>
+		
+		</div>
+		
+		<div class="you_should_text">
+			Watch 
+			<a data-type="changer" data-value="event" class="movie" target="_blank" href="http://starwars.com">Star Wars: A New Hope</a>
+			<i data-value="event" class="icon icon-refresh icon-white"></i> 
+			with 
+			<a data-type="changer" data-value="person" class="movie" target="_blank" href="http://facebook.com/david">David Strauss</a>
+			<i data-value="person" class="icon icon-refresh icon-white"></i>
+		</div>
+		
+		<div class="buttons_container">
+		
+			<div class="button_wrapper"><a class="next_button btn btn-primary btn-large" target="_blank" href="https://www.facebook.com/dialog/send?app_id=123050457758183&
+				name=People%20Argue%20Just%20to%20Win&
+				link=http://www.nytimes.com/2011/06/15/arts/people-argue-just-to-win-scholars-assert.html&
+				to=7904202&
+				redirect_uri=http://www.example.com/response">Sounds awesome - Message David</a></div>
+			<div class="button_wrapper"><div class="next_button btn btn-danger">No, I hate David and Star Wars</div></div>
+			
+		</div>
+		
+	</div>
+
+	</script>
+	
+</html>
