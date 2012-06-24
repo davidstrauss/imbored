@@ -476,7 +476,7 @@
 		});
 	</script>
 	
-<!-- 	<div id="fb-root"></div>
+	<div id="fb-root"></div>
 	<script>
 	  window.fbAsyncInit = function() {
 	    FB.init({
@@ -501,7 +501,7 @@
 	     js.src = "http://connect.facebook.net/en_US/all.js";
 	     ref.parentNode.insertBefore(js, ref);
 	   }(document));
-	</script> -->
+	</script>
 	
 	<!-- creates a jQuery function to talk with handlebars more easily -->
 	<script type="text/javascript">
@@ -537,13 +537,15 @@
 
 	<script id="stage2_template" type="text/x-handlebars-template">
 		
+		{{debug}}
+		
 		<div id="stage2_container">
 					
 			<div class="picture_container">
 			
 				<div class="picture_holder"><div data-value="event" class="picture event animate"></div></div>
 				<div class=" plus">&#10010;</div>
-				<div class="picture_holder"><div data-value="person" class="picture person animate" style="background-image:url('https://graph.facebook.com/{{data.id}}/picture')"></div></div>
+				<div class="picture_holder"><div data-value="person" class="picture person animate" style="background-image:url('https://graph.facebook.com/{{id}}/picture')"></div></div>
 			
 			</div>
 			
@@ -552,7 +554,7 @@
 				<a data-type="changer" data-value="event" class="movie" target="_blank" href="http://starwars.com">Star Wars: A New Hope</a>
 				<i data-value="event" class="icon icon-refresh icon-white"></i> 
 				with 
-				<a data-type="changer" data-value="person" class="movie" target="_blank" href="http://facebook.com/{{id}}">{{data.name}}</a>
+				<a data-type="changer" data-value="person" class="movie" target="_blank" href="http://facebook.com/{{id}}">{{name}}</a>
 				<i data-value="person" class="icon icon-refresh icon-white"></i>
 			</div>
 		
@@ -561,9 +563,9 @@
 				<div class="button_wrapper"><a class="next_button btn btn-primary btn-large" target="_blank" href="https://www.facebook.com/dialog/send?app_id=123050457758183&
 					name=People%20Argue%20Just%20to%20Win&
 					link=http://www.nytimes.com/2011/06/15/arts/people-argue-just-to-win-scholars-assert.html&
-					to={{data.id}}&
-					redirect_uri=http://www.example.com/response">Sounds awesome - Message {{data.name}}</a></div>
-				<div class="button_wrapper"><div class="next_button btn btn-danger">No, I hate {{data.name}} and Star Wars</div></div>
+					to={{id}}&
+					redirect_uri=http://www.example.com/response">Sounds awesome - Message {{name}}</a></div>
+				<div class="button_wrapper"><div class="next_button btn btn-danger">No, I hate {{name}} and Star Wars</div></div>
 				
 			</div>
 		
